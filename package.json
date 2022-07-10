@@ -8,6 +8,7 @@
     "test": "jest src",
     "test-watch": "npm run test -- --watch",
     "build": "vite build",
+    "build-ci": "npm run test && npm run build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
