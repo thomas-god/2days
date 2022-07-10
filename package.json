@@ -47,5 +47,8 @@
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom/extend-expect"
     ]
+  },
+  "dependencies": {
+    "neverthrow": "^4.3.1"
   }
 }
