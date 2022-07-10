@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8d8d48ca-1288-4b55-b0b1-132ba246c611/deploy-status)](https://app.netlify.com/sites/cheery-concha-e09aaa/deploys)
+
+
 # Svelte + TS + Vite
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
