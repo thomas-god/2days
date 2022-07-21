@@ -49,6 +49,7 @@
     ]
   },
   "dependencies": {
+    "dayjs": "^1.11.4",
     "neverthrow": "^4.3.1"
   }
 }

@@ -5,14 +5,14 @@ export interface ICreateNewMonthUsecase {
 }
 
 export interface IProvideDaysInMonth {
-  daysInMonth(month: number): Result<number, string>;
+  daysInMonth(year: number, month: number): Result<number, string>;
 }
 
 export class CreateNewMonthUsecase implements ICreateNewMonthUsecase {
   constructor(private readonly daysInMonthProvider: IProvideDaysInMonth) {}
 
   createNewMonth(year: number, month: number): Result<boolean[], string> {
-    const nbDaysRes = this.daysInMonthProvider.daysInMonth(month)
+    const nbDaysRes = this.daysInMonthProvider.daysInMonth(year, month)
     if (nbDaysRes.isErr()) {
         return err(nbDaysRes.error)
     }

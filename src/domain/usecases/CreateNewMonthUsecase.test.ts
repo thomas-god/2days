@@ -3,10 +3,10 @@ import { err, ok } from "neverthrow";
 import { CreateNewMonthUsecase } from "./CreateNewMonthUsecase";
 
 const daysInMonthProviderOk = {
-  daysInMonth: (month: number) => ok(3),
+  daysInMonth: (year: number, month: number) => ok(3),
 };
 const daysInMonthProviderNok = {
-  daysInMonth: (month: number) => err("toto"),
+  daysInMonth: (year: number, month: number) => err("toto"),
 };
 
 it("should create a new month", () => {
