@@ -34,13 +34,13 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"vite": "^4.4.2",
-		"vitest": "^0.32.2",
-		"ws": "^8.13.0"
+		"vitest": "^0.32.2"
 	},
 	"type": "module",
 	"dependencies": {
 		"@neondatabase/serverless": "^0.5.2",
 		"drizzle-orm": "^0.27.2",
-		"pg": "^8.11.1"
+		"pg": "^8.11.1",
+		"ws": "^8.13.0"
 	}
 }
