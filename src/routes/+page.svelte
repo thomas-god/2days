@@ -21,6 +21,7 @@
   {#each data.dates as { date, state }}
     <form method="POST" use:enhance>
       <input type="hidden" name="date" value={date.toISOString()} />
+      <input type="hidden" name="state" value={state} />
       <button
         formaction="?/toggle"
         class={dateStyles(date, state)}
