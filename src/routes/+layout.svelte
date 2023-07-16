@@ -2,18 +2,18 @@
   import type { LayoutData } from './$types';
 
   export let data: LayoutData;
-
-  $: loggedIn = data.loggedIn;
 </script>
 
 <nav>
   <span class="title"> two-days </span>
-  {#if !loggedIn}
+  {#if !data.loggedIn}
     <a class="cta" href="/login" data-sveltekit-preload-data="off"> Login </a>
   {:else}
-    <span>
+    <span class="left">
       <span class="name">{data.name}</span>
-      <a class="cta" href="/logout" data-sveltekit-preload-data="off"> Logout </a>
+      <form method="POST" action="/logout">
+        <button class="cta" data-sveltekit-preload-data="off"> Logout </button>
+      </form>
     </span>
   {/if}
 </nav>
@@ -28,6 +28,7 @@
     padding: 1rem;
     background-color: #65d6b0;
     color: #686868;
+    font-family: 'Courier New', Courier, monospace;
   }
 
   .title {
@@ -37,15 +38,30 @@
 
   .cta {
     color: #686868;
+    padding: 0.5rem;
     text-decoration: none;
     border: 1px solid #686868;
-    padding: 0.5rem;
     border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-block;
+  }
+
+  button {
+    background-color: #65d6b0;
+    height: 100%;
+    font-family: inherit;
   }
 
   .cta:hover {
     background-color: #686868;
     color: #65d6b0;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
   }
 
   .name {

@@ -11,6 +11,6 @@ export const actions = {
     cookies.set('loggedIn', 'true', { httpOnly: false });
     cookies.set('name', username.toString(), { httpOnly: false });
 
-    throw redirect(302, '/');
+    throw redirect(302, '/days');
   }
 } satisfies Actions;

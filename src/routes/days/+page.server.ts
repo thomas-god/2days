@@ -1,4 +1,3 @@
-import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { createMonthDates } from '$lib/time';
 import { fetchDays, insertDays } from '$lib/db/days';
@@ -22,9 +21,6 @@ async function getValues(now: Date, user: string): Promise<Value[]> {
 }
 
 export const load = (async ({ cookies }) => {
-  if (!cookies.get('username')) {
-    throw redirect(302, '/login');
-  }
   const now = new Date();
   const values = await getValues(now, cookies.get('username') as string);
 
@@ -36,10 +32,6 @@ export const load = (async ({ cookies }) => {
 
 export const actions = {
   toggle: async ({ request, cookies }) => {
-    if (!cookies.get('username')) {
-      throw redirect(302, '/login');
-    }
-
     const user = cookies.get('username') as string;
     const form = await request.formData();
     const date = new Date(form.get('date') as string);
