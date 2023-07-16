@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { createMonthDates } from './lib/time';
 
@@ -26,7 +27,11 @@ const toggleValue = (date: Date) => {
   }
 };
 
-export const load = (async () => {
+export const load = (async ({ cookies }) => {
+  if (!cookies.get('username')) {
+    throw redirect(302, '/login');
+  }
+
   return {
     now,
     dates: values
@@ -34,7 +39,8 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-  toggle: async ({ request }) => {
+  toggle: async ({ request, cookies }) => {
+    console.log(cookies.get('username'));
     const form = await request.formData();
     const date = new Date(form.get('date') as string);
     toggleValue(date);
