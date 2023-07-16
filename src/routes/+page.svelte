@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
   import type { PageData } from './$types';
-  import { isWithinMonth, isToday, toHumanDate } from './lib/time';
+  import { isWithinMonth, isToday, toHumanDate } from '$lib/time';
 
   export let data: PageData;
 
