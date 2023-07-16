@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS "t_days_uniqued_key" ON "t_days" ("user","panel","date");
