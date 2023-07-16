@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { enhance } from '$app/forms';
   import type { PageData } from './$types';
   import { isWithinMonth, isToday, toHumanDate } from './lib/time';
 
@@ -18,7 +19,7 @@
 
 <div class="dates-container">
   {#each data.dates as { date, state }}
-    <form method="POST">
+    <form method="POST" use:enhance>
       <input type="hidden" name="date" value={date.toISOString()} />
       <button
         formaction="?/toggle"
