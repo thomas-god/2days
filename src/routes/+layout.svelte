@@ -9,9 +9,12 @@
 <nav>
   <span class="title"> two-days </span>
   {#if !loggedIn}
-    <a class="login" href="/login" data-sveltekit-preload-data="off"> Login </a>
+    <a class="cta" href="/login" data-sveltekit-preload-data="off"> Login </a>
   {:else}
-    <a class="login" href="/logout" data-sveltekit-preload-data="off"> Logout </a>
+    <span>
+      <span class="name">{data.name}</span>
+      <a class="cta" href="/logout" data-sveltekit-preload-data="off"> Logout </a>
+    </span>
   {/if}
 </nav>
 
@@ -32,7 +35,7 @@
     font-weight: bold;
   }
 
-  .login {
+  .cta {
     color: #686868;
     text-decoration: none;
     border: 1px solid #686868;
@@ -40,8 +43,15 @@
     border-radius: 0.25rem;
   }
 
-  .login:hover {
+  .cta:hover {
     background-color: #686868;
     color: #65d6b0;
+  }
+
+  .name {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    color: black;
   }
 </style>
