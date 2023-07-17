@@ -37,6 +37,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@auth/core": "^0.9.0",
+    "@auth/sveltekit": "^0.3.5",
     "@neondatabase/serverless": "^0.5.2",
     "dayjs": "^1.11.9",
     "drizzle-orm": "^0.27.2",
