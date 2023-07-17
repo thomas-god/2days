@@ -1,7 +1,6 @@
 import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import type { Adapter } from '@auth/core/adapters';
 import { and, eq } from 'drizzle-orm';
-import crypto from 'node:crypto';
 import { accounts } from './accounts.schema';
 import { sessions } from './sessions.schema';
 import { users } from './users.schema';
@@ -15,7 +14,7 @@ export function pgDrizzleAdapter(client: PostgresJsDatabase<Record<string, never
     createUser: async (data) => {
       return await client
         .insert(users)
-        .values({ ...data, id: crypto.randomUUID() })
+        .values(data)
         .returning()
         .then((res) => res[0] ?? null);
     },
