@@ -1,13 +1,20 @@
-import { redirect, type Handle } from '@sveltejs/kit';
+import { SvelteKitAuth } from '@auth/sveltekit';
+import GitHub from '@auth/core/providers/github';
+import type { Handle } from '@sveltejs/kit';
+import { pgDrizzleAdapter } from '$lib/db/auth';
+import { db } from '$lib/db';
 
-export const handle = (async ({ event, resolve }) => {
-  if (event.url.pathname === '/login') {
-    return await resolve(event);
-  }
-
-  if (!event.cookies.get('username')) {
-    console.log('redirecting to login');
-    throw redirect(302, '/login');
-  }
-  return await resolve(event);
+export const handle = SvelteKitAuth(async (event) => {
+  const authOptions = {
+    providers: [
+      GitHub({
+        clientId: event.platform.env.GITHUB_ID,
+        clientSecret: event.platform.env.GITHUB_SECRET
+      })
+    ],
+    secret: event.platform.env.AUTH_SECRET,
+    trustHost: true,
+    adapter: pgDrizzleAdapter(db)
+  };
+  return authOptions;
 }) satisfies Handle;
