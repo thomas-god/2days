@@ -28,7 +28,10 @@ export function Day() {
   const state = useSignal<State>("PENDING");
 
   return (
-    <button onClick={() => state.value = toggleState(state.value)}>
+    <button
+      onClick={() => state.value = toggleState(state.value)}
+      class="text-3xl p-2"
+    >
       {icons[state.value]}
     </button>
   );

@@ -3,7 +3,7 @@ import { Day } from "../islands/Day.tsx";
 
 export default function Home() {
   return (
-    <div class="m-8">
+    <div class="mx-8 my-32">
       <Day />
       <Day />
       <Day />
