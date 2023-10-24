@@ -1,4 +1,3 @@
-import { useSignal } from "@preact/signals";
 import { Day } from "../islands/Day.tsx";
 
 export default function Home() {
