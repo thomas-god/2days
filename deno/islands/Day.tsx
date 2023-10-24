@@ -1,13 +1,10 @@
-import { useSignal } from "@preact/signals";
-
-export interface DayProps {
-  state: "DONE" | "NOT_DONE" | "PENDING";
-}
+import { Signal } from "@preact/signals";
+import { tw } from "twind";
 
 const states = ["DONE", "NOT_DONE", "PENDING"] as const;
-type State = typeof states[number];
+export type State = typeof states[number];
 
-const icons: Record<DayProps["state"], string> = {
+const icons: Record<State, string> = {
   DONE: "✅",
   NOT_DONE: "❌",
   PENDING: "⏳",
@@ -24,13 +21,16 @@ const toggleState = (state: State): State => {
   }
 };
 
-export function Day() {
-  const state = useSignal<State>("PENDING");
+interface DayProps {
+  state: Signal<State>;
+  style?: string;
+}
 
+export function Day({ state, style = "" }: DayProps) {
   return (
     <button
       onClick={() => state.value = toggleState(state.value)}
-      class="text-3xl p-2"
+      class={tw("text-3xl", "p-2", style)}
     >
       {icons[state.value]}
     </button>
