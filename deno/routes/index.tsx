@@ -3,5 +3,9 @@ import { SeriesOfDays } from "../islands/SeriesOfDays.tsx";
 
 export default function Home() {
   const days: State[] = Array(5).fill("PENDING");
-  return <SeriesOfDays states={days} />;
+  return (
+    <section class="w-full flex justify-center">
+      <SeriesOfDays states={days} />
+    </section>
+  );
 }
