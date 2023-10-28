@@ -14,12 +14,18 @@ export const handler: Handlers<HomeProps> = {
   async GET(req, ctx) {
     const session = await getSessionId(req);
     if (!session) {
-      return Response.redirect("/signin");
+      return new Response("", {
+        status: 307,
+        headers: { Location: "/signin" },
+      });
     }
 
     const user = await kv.get<User>(["users_by_sessionId", session]);
     if (!user || !user.value) {
-      return Response.redirect("/signin");
+      return new Response("", {
+        status: 307,
+        headers: { Location: "/signin" },
+      });
     }
 
     return ctx.render({ name: user.value.name });

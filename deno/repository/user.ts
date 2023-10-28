@@ -33,3 +33,29 @@ export const createUserFromGithub = async (
     .set(["users_by_sessionId", githubUserInfo.sessionId], user)
     .commit();
 };
+
+export const getUser = async (id: string): Promise<User | null> => {
+  const user = await kv.get<User>(["users", id]);
+  return user.value;
+};
+
+export const getUserBySessionId = async (
+  sessionId: string,
+): Promise<User | null> => {
+  const user = await kv.get<User>(["users_by_sessionId", sessionId]);
+  return user.value;
+};
+
+export const getUserByGithubId = async (
+  githubId: string,
+): Promise<User | null> => {
+  const user = await kv.get<User>(["users_by_githubId", githubId]);
+  return user.value;
+};
+
+export const updateUserSession = async (user: User, sessionsId: string) => {
+  const newSessionKey = ["users_by_sessionId", sessionsId];
+  return await kv.atomic()
+    .set(newSessionKey, user)
+    .commit();
+};
