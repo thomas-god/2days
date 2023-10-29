@@ -4,7 +4,7 @@ import { render } from "@testing-library/preact";
 import { assertEquals } from "$std/testing/asserts.ts";
 
 import { SeriesOfDays } from "./SeriesOfDays.tsx";
-import { State } from "./Day.tsx";
+import { State } from "../model/State.ts";
 
 describe("SeriesOfDays", () => {
   beforeEach(() => {

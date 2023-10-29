@@ -1,5 +1,5 @@
-import { State } from "../islands/Day.tsx";
 import { SeriesOfDays } from "../islands/SeriesOfDays.tsx";
+import { State } from "../model/State.ts";
 
 export const HabitSummary = (
   { habit, lastDays }: { habit: string; lastDays: State[] },

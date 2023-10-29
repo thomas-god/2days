@@ -1,24 +1,11 @@
 import { Signal } from "@preact/signals";
 import { tw } from "twind";
-
-const states = ["DONE", "NOT_DONE", "PENDING"] as const;
-export type State = typeof states[number];
+import { State, toggleState } from "../model/State.ts";
 
 const icons: Record<State, string> = {
   DONE: "✅",
   NOT_DONE: "❌",
   PENDING: "⏳",
-};
-
-const toggleState = (state: State): State => {
-  switch (state) {
-    case "DONE":
-      return "NOT_DONE";
-    case "NOT_DONE":
-      return "DONE";
-    case "PENDING":
-      return "DONE";
-  }
 };
 
 interface DayProps {

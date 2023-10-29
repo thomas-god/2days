@@ -3,8 +3,9 @@ import { fireEvent, render } from "@testing-library/preact";
 import { beforeEach, describe, it } from "$std/testing/bdd.ts";
 import { assertEquals } from "$std/testing/asserts.ts";
 
-import { Day, State } from "./Day.tsx";
+import { Day } from "./Day.tsx";
 import { signal } from "@preact/signals";
+import { State } from "../model/State.ts";
 
 describe("Day", () => {
   beforeEach(() => {
