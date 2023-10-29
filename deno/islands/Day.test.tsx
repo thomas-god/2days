@@ -18,7 +18,9 @@ describe("Day", () => {
 
   const wrappedDay = (initialState: State = "PENDING") => {
     const state = signal(initialState);
-    const { container } = render(<Day state={state} />);
+    const { container } = render(
+      <Day state={state} udpateState={(state) => Promise.resolve()} />,
+    );
     return container.querySelector("button")!;
   };
 

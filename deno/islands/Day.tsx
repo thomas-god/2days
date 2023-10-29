@@ -10,13 +10,19 @@ const icons: Record<State, string> = {
 
 interface DayProps {
   state: Signal<State>;
+  udpateState: (newState: State) => Promise<void>;
   style?: string;
 }
 
-export function Day({ state, style = "" }: DayProps) {
+export function Day({ state, udpateState, style = "" }: DayProps) {
+  const update = async (state: Signal<State>) => {
+    state.value = toggleState(state.value);
+    await udpateState(state.value);
+  };
+
   return (
     <button
-      onClick={() => state.value = toggleState(state.value)}
+      onClick={async () => await update(state)}
       class={tw("text-3xl", "p-2", "focus:outline-none", style)}
     >
       {icons[state.value]}

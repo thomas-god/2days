@@ -30,7 +30,9 @@
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
-    "deno-kv-oauth": "https://deno.land/x/deno_kv_oauth@v0.10.0/mod.ts"
+    "deno-kv-oauth": "https://deno.land/x/deno_kv_oauth@v0.10.0/mod.ts",
+    "zod": "https://deno.land/x/zod@v3.22.4/mod.ts",
+    "dayjs": "https://esm.sh/dayjs@v1.11.10"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
